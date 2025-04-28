@@ -3,17 +3,20 @@ package com.example.training1.student;
 
 import com.example.training1.student.dto.RequestStudent;
 import com.example.training1.student.dto.ResponseStudent;
-import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-@RequiredArgsConstructor
 public class StudentServiseImpl implements StudentServise {
 
     private final StudentRepository studentRepository;
     private final StudentMapper studentMapper;
+
+    public StudentServiseImpl(StudentRepository studentRepository, StudentMapper studentMapper) {
+        this.studentRepository = studentRepository;
+        this.studentMapper = studentMapper;
+    }
 
     @Override
     public void create(RequestStudent request) {
