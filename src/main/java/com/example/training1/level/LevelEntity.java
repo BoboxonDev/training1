@@ -1,6 +1,7 @@
 package com.example.training1.level;
 
 
+import com.example.training1.student.StudentEntity;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -30,4 +31,9 @@ public class LevelEntity {
     private LocalDateTime updatedAt;
 
     private LocalDateTime deletedAt;
+
+
+    @ManyToOne
+    @JoinColumn(name = "student_id")
+    private StudentEntity student;
 }
