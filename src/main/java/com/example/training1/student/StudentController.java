@@ -18,7 +18,7 @@ public class StudentController {
     }
 
     @PostMapping
-    ResponseEntity<Void> createStudent(@PathVariable RequestStudent request) {
+    ResponseEntity<Void> createStudent(@RequestBody RequestStudent request) {
         studentServise.create(request);
         return ResponseEntity.ok().build();
     }

@@ -23,6 +23,8 @@ public class StudentServiseImpl implements StudentServise {
     @Override
     public void create(RequestStudent request) {
         var Student = studentMapper.toEntity(request);
+        Student.setCreatedAt(LocalDateTime.now());
+        Student.setUpdatedAt(LocalDateTime.now());
         studentRepository.save(Student);
     }
 
@@ -69,7 +71,4 @@ public class StudentServiseImpl implements StudentServise {
         studentRepository.save(entity);
         return dto;
     }
-
-
-
 }
