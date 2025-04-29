@@ -13,4 +13,6 @@ public class ResponseStudent {
     private String fullName;
 
     private String phone;
+
+    private String asdl;
 }
