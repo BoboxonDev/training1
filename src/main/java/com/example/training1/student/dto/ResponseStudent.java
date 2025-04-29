@@ -13,6 +13,4 @@ public class ResponseStudent {
     private String fullName;
 
     private String phone;
-
-    private Long asd;
 }
