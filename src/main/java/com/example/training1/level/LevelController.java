@@ -20,7 +20,7 @@ public class LevelController {
     }
 
     @PostMapping
-    ResponseEntity<Void> creareLevel(@RequestBody LevelRequest request) {
+    ResponseEntity<Void> createLevel(@RequestBody LevelRequest request) {
         levelService.create(request);
         return ResponseEntity.ok().build();
     }

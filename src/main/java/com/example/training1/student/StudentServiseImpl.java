@@ -35,7 +35,7 @@ public class StudentServiseImpl implements StudentServise {
 
     @Override
     public List<ResponseStudent> getAll() {
-        var students = studentRepository.findAllByDeleteIsNull();
+        var students = studentRepository.findAllByDeletedIsNull();
         List<ResponseStudent> list = new ArrayList<>();
 
         students.forEach(student -> {
@@ -50,7 +50,6 @@ public class StudentServiseImpl implements StudentServise {
                     Llist.add(L);
                 });
             }
-
             dto.setLevel(Llist);
             list.add(dto);
 
@@ -85,7 +84,7 @@ public class StudentServiseImpl implements StudentServise {
     @Override
     public ResponseStudent deleteById(Long id) {
         var entity = studentRepository.findById(id).orElseThrow();
-        entity.setDeletedAt(LocalDateTime.now());
+        entity.setDeleted(LocalDateTime.now());
         var dto = studentMapper.toDto(entity);
         studentRepository.save(entity);
         return dto;

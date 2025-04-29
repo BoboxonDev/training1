@@ -30,5 +30,5 @@ public class StudentEntity {
 
     private LocalDateTime updatedAt;
 
-    private LocalDateTime deletedAt;
+    private LocalDateTime deleted;
 }

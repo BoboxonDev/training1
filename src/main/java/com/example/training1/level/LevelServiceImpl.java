@@ -30,7 +30,7 @@ public class LevelServiceImpl implements LevelService{
 
     @Override
     public List<LevelResponse> getAllLevel() {
-        var levels = levelRepository.findAllByDeleteIsNull();
+        var levels = levelRepository.findAllByDeletedIsNull();
         List<LevelResponse> list = new ArrayList<>();
 
         levels.forEach(level -> {
@@ -73,7 +73,7 @@ public class LevelServiceImpl implements LevelService{
     @Override
     public LevelResponse deleteById(Long id) {
         var entity = levelRepository.findById(id).orElseThrow();
-        entity.setDeletedAt(LocalDateTime.now());
+        entity.setDeleted(LocalDateTime.now());
         var dto = levelMapper.toDto(entity);
         levelRepository.save(entity);
         return dto;

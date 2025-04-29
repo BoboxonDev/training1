@@ -13,5 +13,5 @@ public interface LevelRepository extends JpaRepository<LevelEntity, Long> {
     @Query("SELECT s FROM LevelEntity s WHERE s.student.id = :levelId")
     List<LevelEntity> findAllByLevelId(@Param("levelId") Long levelId);
 
-    List<LevelEntity> findAllByDeleteIsNull();
+    List<LevelEntity> findAllByDeletedIsNull();
 }
