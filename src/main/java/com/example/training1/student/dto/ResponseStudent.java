@@ -10,7 +10,9 @@ public class ResponseStudent {
 
     private Long id;
 
-    private String fullname;
+    private String fullName;
 
     private String phone;
+
+    private Long asd;
 }
