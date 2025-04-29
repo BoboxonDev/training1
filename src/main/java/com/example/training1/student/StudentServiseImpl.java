@@ -5,6 +5,8 @@ import com.example.training1.student.dto.RequestStudent;
 import com.example.training1.student.dto.ResponseStudent;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -26,27 +28,46 @@ public class StudentServiseImpl implements StudentServise {
 
     @Override
     public List<ResponseStudent> getAll() {
-        return null;
+        var students = studentRepository.findAllByDeleteIsNull();
+        List<ResponseStudent> list = new ArrayList<>();
+
+        students.forEach(student -> {
+            var dto =studentMapper.toDto(student);
+
+            list.add(dto);
+        });
+        return list;
     }
 
     @Override
     public ResponseStudent getById(Long id) {
-        return null;
+        var entity = studentRepository.findById(id).orElseThrow();
+        var dto = studentMapper.toDto(entity);
+        return dto;
     }
 
     @Override
     public void updateStudent(RequestStudent id) {
-
     }
 
     @Override
     public ResponseStudent updateStudent(Long id, RequestStudent request) {
-        return null;
+        var entity = studentRepository.findById(id).orElseThrow();
+        entity.setFullname(request.getFullName());
+        entity.setPhone(request.getPhone());
+
+        var updateEntity = studentRepository.save(entity);
+        var dto = studentMapper.toDto(updateEntity);
+        return dto;
     }
 
     @Override
     public ResponseStudent deleteById(Long id) {
-        return null;
+        var entity = studentRepository.findById(id).orElseThrow();
+        entity.setDeletedAt(LocalDateTime.now());
+        var dto = studentMapper.toDto(entity);
+        studentRepository.save(entity);
+        return dto;
     }
 
 
