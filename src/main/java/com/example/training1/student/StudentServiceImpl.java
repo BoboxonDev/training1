@@ -12,14 +12,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class StudentServiseImpl implements StudentServise {
+public class StudentServiceImpl implements StudentService {
 
     private final StudentRepository studentRepository;
     private final StudentMapper studentMapper;
 
     private final LevelRepository levelRepository;
 
-    public StudentServiseImpl(StudentRepository studentRepository, StudentMapper studentMapper, LevelRepository levelRepository) {
+    public StudentServiceImpl(StudentRepository studentRepository, StudentMapper studentMapper, LevelRepository levelRepository) {
         this.studentRepository = studentRepository;
         this.studentMapper = studentMapper;
         this.levelRepository = levelRepository;
@@ -73,7 +73,7 @@ public class StudentServiseImpl implements StudentServise {
     @Override
     public ResponseStudent updateStudent(Long id, RequestStudent request) {
         var entity = studentRepository.findById(id).orElseThrow();
-        entity.setFullname(request.getFullName());
+        entity.setFullName(request.getFullName());
         entity.setPhone(request.getPhone());
 
         var updateEntity = studentRepository.save(entity);
@@ -84,7 +84,7 @@ public class StudentServiseImpl implements StudentServise {
     @Override
     public ResponseStudent deleteById(Long id) {
         var entity = studentRepository.findById(id).orElseThrow();
-        entity.setDeleted(LocalDateTime.now());
+        entity.setDeletedAt(LocalDateTime.now());
         var dto = studentMapper.toDto(entity);
         studentRepository.save(entity);
         return dto;

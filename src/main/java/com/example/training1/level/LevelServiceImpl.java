@@ -38,7 +38,7 @@ public class LevelServiceImpl implements LevelService{
             dto.setStudentId(level.getStudent().getId());
             var l = new ResponseStudent();
             l.setId(level.getStudent().getId());
-            l.setFullName(level.getStudent().getFullname());
+            l.setFullName(level.getStudent().getFullName());
             l.setPhone(level.getStudent().getPhone());
             dto.setResponseStudent(l);
             list.add(dto);
@@ -73,7 +73,7 @@ public class LevelServiceImpl implements LevelService{
     @Override
     public LevelResponse deleteById(Long id) {
         var entity = levelRepository.findById(id).orElseThrow();
-        entity.setDeleted(LocalDateTime.now());
+        entity.setDeletedAt(LocalDateTime.now());
         var dto = levelMapper.toDto(entity);
         levelRepository.save(entity);
         return dto;

@@ -30,7 +30,7 @@ public class LevelEntity {
 
     private LocalDateTime updatedAt;
 
-    private LocalDateTime deleted;
+    private LocalDateTime deletedAt;
 
 
     @ManyToOne

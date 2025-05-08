@@ -11,9 +11,9 @@ import java.util.List;
 @RequestMapping("/api/student")
 public class StudentController {
 
-    private final StudentServise studentServise;
+    private final StudentService studentServise;
 
-    public StudentController(StudentServise studentServise) {
+    public StudentController(StudentService studentServise) {
         this.studentServise = studentServise;
     }
 

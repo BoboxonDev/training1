@@ -8,19 +8,18 @@ import java.time.LocalDateTime;
 @Entity
 @Table(name = "Students")
 @Builder
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
 @Getter
 @Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class StudentEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "fullname")
-    private String fullname;
+    @Column(name = "fullName")
+    private String fullName;
 
     @Column(name = "phone")
     private String phone;
@@ -30,5 +29,5 @@ public class StudentEntity {
 
     private LocalDateTime updatedAt;
 
-    private LocalDateTime deleted;
+    private LocalDateTime deletedAt;
 }
